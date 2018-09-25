@@ -3,13 +3,13 @@ angular.module('app', ['ui.router']);
 angular.module('app').config(['$stateProvider', '$urlRouterProvider', stateProvider]);
 
 function stateProvider ($stateProvider, $urlRouterProvider) {
-	
+
 	$urlRouterProvider.otherwise('/');
-	
+
 	$stateProvider
-		
+
 		// HOME STATES AND NESTED VIEWS ====
-		
+
 		.state('home',{
 			url:'/',
 			template: '<products></products>'
@@ -21,5 +21,12 @@ function stateProvider ($stateProvider, $urlRouterProvider) {
 			},
 			template: '<product-details></product-details>'
 		})
-							
+		.state('checkout',{
+			url:'/checkout',
+			params: {
+				id: null
+			},
+			template: '<product-details></product-details>'
+		})
+
 }
