@@ -32,29 +32,29 @@ function productsController($stateParams, productsService, productDataService) {
 	}
 
 	function displayProductsData2 (responseObj){
+		
 		var productData = [];
-		angular.forEach(responseObj, function(value, key) {
-
-				if(value.categories.length > 0){
-					for(var j=0; j < value.categories.length; j++){
-						for(var i=0; i < cateogoryData.length; i++){
-							var productCount = 0;
-							if(cateogoryData[i].id === value.categories[i].id){
-								cateogoryData[i].products = [{}];
-								cateogoryData[i].products[productCount].name = value.name;
-								cateogoryData[i].products[productCount].price = value.price;
-								cateogoryData[i].products[productCount].sale_price = value.sale_price;
-								productCount++;
-								//console.log('Inserted Product successfully!');
-								console.log(cateogoryData);
-							}
+		angular.forEach(cateogoryData, function(cValue) {
+			var productCount = 0;
+			cValue.products = [];
+			angular.forEach(responseObj, function(pValue) {
+				if(pValue.categories.length > 0){
+					for(var i=0; i < pValue.categories.length; i++){
+						if(cValue.id === pValue.categories[i].id){
+							var obj= {};
+							obj.name = pValue.name;
+							obj.price = pValue.price;
+							obj.sale_price = pValue.sale_price;
+							obj.imageSrc = pValue.images[0].src;
+							cValue.products.push(obj);
 						}
 					}
 				}
-
+			})
 		})
-		console.log('new cateogry data');
+		console.log('Inserted Products successfully!');
 		console.log(cateogoryData);
+		self.data = cateogoryData;
 	}
 
 	function displayProductsData(responseObj, id){
@@ -68,7 +68,6 @@ function productsController($stateParams, productsService, productDataService) {
 			  }
 		});
 			console.log('printing categoryData array: ', cateogoryData);
-			self.data = cateogoryData;
 			convertProductsData();
 		}
 	}
