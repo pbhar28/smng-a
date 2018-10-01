@@ -117,16 +117,34 @@
 		<div class="Yu6Bn">{{$ctrl.data.products.length}} items</div>
 		<div class="_1bGRc">
 			<div class="_2J3sY">
-				<div class="_2IEoD" itemscope="" itemtype="http://schema.org/MenuItem" ng-repeat="product in item.products">
+				<div class="_2IEoD" style="height:auto; margin-bottom: 15px;" itemscope="" itemtype="http://schema.org/MenuItem" ng-repeat="product in item.products">
 					<div class="Qfuib">
 					<img class="_2tuBw _12_oN _3VTAJ m0mpx" height="160" width="244" alt="" src="{{product.imageSrc}}">
 					<span class="_3fVLa"></span>
 					<div class="_2FMT0 _1bfQ9" style="background-color: rgb(213, 61, 76); color: rgb(255, 255, 255);"><span class="_23BlT" style="border-color: rgb(176, 35, 49) rgb(176, 35, 49) transparent transparent;"></span>BESTSELLER<span class="rZ-gh" style="border-color: rgb(213, 61, 76) transparent;"></span></div>
 					</div>
 					<span class="icon-foodSymbol tKOaB _3h2yZ _3x58u"></span>
-					<div class="_2tcDp"><div><div class="ft_i6"><div class="_2SyqU" itemprop="name">{{product.name}}</div>
-					<span class="HwSGt">Price: {{product.price}}</span><span> | </span><span class="HwSGt">Sale Price: {{product.sale_price}}</span>		
-					</div></div></div>
+					<div class="_2tcDp">
+						<div>
+							<div class="ft_i6">
+								<div class="_2SyqU" itemprop="name">{{product.name}}</div>
+								<span class="HwSGt"></span>	
+							</div>
+						</div>
+					</div>				
+					<div><!-- class="JWyJG" -->
+						<div class="_12lpv _3WiZC" style="margin-top: 7px;">
+						<span class="bQEAj">{{product.price}}</span>
+						&nbsp;|&nbsp;SP: 
+						<span class="bQEAj">{{product.sale_price}}</span></div>		
+						<div class="_33Hf_ _3L1X9">
+							<div class="_1RPOp _36fT9">ADD</div>
+							<div class="_1ds9T _2WdfZ _4aKW6">+</div>
+							<div class="_29Y5Z _20vNm _4aKW6"></div>
+							<div class="_2zAXs _2quy- _4aKW6">0</div>
+						</div>
+						
+					</div>	
 				</div>
 			</div>
 		</div>

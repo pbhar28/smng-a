@@ -1,20 +1,21 @@
 <html>
   <head>
-	<title>AngularJS App</title>
+	<title>Food Delivery | Demo App</title>
     <style>.active { color: red; }</style>
 	<link rel="stylesheet" href="./app.css">
   </head>
 
   <body ng-app="app">
-    <a href="#!/">Home</a>
-    <a href="#!/product-details" >Details</a>
-
-    <ui-view></ui-view>
+	<div class="_3arMG">
+		<site-header></site-header>
+		<ui-view></ui-view>
+	</div>
     <script src="lib/angular.js"></script>
     <script src="lib/angular-ui-router.min.js"></script>
     <script src="./app.module.js"></script>
     <script src="./services/products.service.js"></script>
     <script src="./services/productsDetails.service.js"></script>
+	<script src="./components/header.component.js"></script>
     <script src="./components/products.component.js"></script>
     <script src="./components/productDetails.component.js"></script>
   </body>
