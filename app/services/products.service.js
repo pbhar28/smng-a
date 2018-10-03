@@ -17,8 +17,7 @@ angular.module('app').factory('productsService', ['$http', getProductFactory]);
 					url : 'https://hangovrr.com/wp-json/wc/v2/products/categories',
 					headers: {
 						"Authorization": 'Basic Y2tfMjdmNjY1YjIwZDU5MTc1OWM2NDUwZDlmZjJkY2RhNjI4OTgwZWRjOTpjc19hYjU0Mzg4MjAyMmRmMDEyYWRhMDRlMzVhMjAwMDFiNTgyNjk4NjI4'
-					},
-					cache: true
+					}
 				}).then(function onSuccess(response) {
 					//Handle success
 					last_request_failed = false;

@@ -5,13 +5,12 @@ angular.module('app').component('productDetails', {
 		// automatically bound to `users` on the controller
 		users: '<'
 	},
-	controller: ['$stateParams', 'productsService', 'productDataService', productsController],
+	controller: ['$stateParams', 'productsService', 'productDataService', 'addtoCartService',productsController],
 	templateUrl: '/views/product.details.html'
 })
 
-function productsController($stateParams, productsService, productDataService) {
-	var self = this, cateogoryData = [];
-
+function productsController($stateParams, productsService, productDataService, addtoCartService) {
+	var self = this, categoryData = [];
 
 	if($stateParams.id){
 		productsService.getProducts().then(function(result){
@@ -34,7 +33,7 @@ function productsController($stateParams, productsService, productDataService) {
 	function displayProductsData2 (responseObj){
 		
 		var productData = [];
-		angular.forEach(cateogoryData, function(cValue) {
+		angular.forEach(categoryData, function(cValue) {
 			var productCount = 0;
 			cValue.products = [];
 			angular.forEach(responseObj, function(pValue) {
@@ -45,6 +44,7 @@ function productsController($stateParams, productsService, productDataService) {
 							obj.name = pValue.name;
 							obj.price = pValue.price;
 							obj.sale_price = pValue.sale_price;
+							obj.id = pValue.id;
 							obj.imageSrc = pValue.images[0].src;
 							cValue.products.push(obj);
 						}
@@ -53,8 +53,8 @@ function productsController($stateParams, productsService, productDataService) {
 			})
 		})
 		console.log('Inserted Products successfully!');
-		console.log(cateogoryData);
-		self.data = cateogoryData;
+		console.log(categoryData);
+		self.data = categoryData;
 	}
 
 	function displayProductsData(responseObj, id){
@@ -64,12 +64,23 @@ function productsController($stateParams, productsService, productDataService) {
 				  var obj = {};
 				  obj.name = value.name;
 				  obj.id = value.id;
-				  cateogoryData.push(obj);
+				  categoryData.push(obj);
 			  }
 		});
-			console.log('printing categoryData array: ', cateogoryData);
+			console.log('printing categoryData array: ', categoryData);
 			convertProductsData();
 		}
+	}
+	
+	//chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security
+	
+	self.addItem = function(id, qt){
+		addtoCartService.addProduct(id, 1).then(function(result){
+			console.log('product added to cart successfully');
+			console.log(result);
+		}, function(error){
+
+		});
 	}
 
 }
