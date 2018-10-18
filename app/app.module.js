@@ -19,7 +19,7 @@ function stateProvider ($stateProvider, $urlRouterProvider) {
 			params: {
 				id: null
 			},
-			template: '<product-details></product-details>'
+			template: '<product-details ></product-details>'
 		})
 		.state('checkout',{
 			url:'/checkout',
@@ -30,3 +30,8 @@ function stateProvider ($stateProvider, $urlRouterProvider) {
 		})
 
 }
+
+angular.module('app').controller('appController', function () {
+	var self = this;
+
+});

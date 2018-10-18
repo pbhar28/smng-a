@@ -3,7 +3,7 @@ angular.module('app').component('productDetails', {
 		// one-way input binding, e.g.,
 		// <users users="$parentCtrl.userlist"></users>
 		// automatically bound to `users` on the controller
-		users: '<'
+		onItemAdd: '&'
 	},
 	controller: ['$stateParams', 'productsService', 'productDataService', 'addtoCartService',productsController],
 	templateUrl: '/views/product.details.html'
@@ -71,16 +71,19 @@ function productsController($stateParams, productsService, productDataService, a
 			convertProductsData();
 		}
 	}
-	
+
 	//chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security
-	
+
 	self.addItem = function(id, qt){
-		addtoCartService.addProduct(id, 1).then(function(result){
+
+
+
+/* 		addtoCartService.addProduct(id, 1).then(function(result){
 			console.log('product added to cart successfully');
 			console.log(result);
 		}, function(error){
 
-		});
+		}); */
 	}
 
 }
