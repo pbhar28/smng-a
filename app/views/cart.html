@@ -1,10 +1,10 @@
-<div class="_3pjw8 _213Hu" ng-if="cartHasItem">
+<div class="_3pjw8 _213Hu" ng-if="$ctrl.cartHasItem">
 	<div class="_1AAH9">
 		<div class="_1aj3g">
 			<div class="_1tugc">
-				<div>1 Item
+				<div> &#8377; {{$ctrl.quantity}} Item<span ng-if="($ctrl.quantity > 1)">s</span>
 					<span class="_2NWOP">|</span>
-					<span class="ny7XD">40</span>
+					<span class="ny7XD">{{$ctrl.total}}</span>
 				</div>
 			</div>
 			<div class="_39JPy">View Cart

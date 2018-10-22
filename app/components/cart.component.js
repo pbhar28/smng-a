@@ -1,17 +1,25 @@
 angular.module('app').component('cartWidget', {
 	templateUrl: '/views/cart.html',
-	controller: ['$state', cartWidgetController],
+	controller: [cartWidgetController],
 	bindings: {
-		// one-way input binding, e.g.,
-		// <users users="$parentCtrl.userlist"></users>
-		// automatically bound to `users` on the controller
+		cartInfo: '<'
 	}
 })
 
-function cartWidgetController( $state) {
+function cartWidgetController() {
 	var self = this;
 
-	self.cartHasItem = false;
+	self.$onChanges = function(changes){
+		if(changes.cartInfo.currentValue) {
+			if(changes.cartInfo.currentValue.quantity > 0){
+				self.cartHasItem = true;
+				self.quantity = changes.cartInfo.currentValue.quantity;
+				self.total = changes.cartInfo.currentValue.total;
+			} else if(changes.cartInfo.currentValue.quantity < 1){
+				self.cartHasItem = false;
+			}
+		}
+	}
 
 	self.loadDetails = function(item){
 

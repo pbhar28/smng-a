@@ -5,23 +5,18 @@
 	<link rel="stylesheet" href="./app.css">
   </head>
 
-  <body ng-controller="appController">
-	<div class="_3arMG">
-		<site-header></site-header>
-    <ui-view></ui-view>
-    <div class="_387x7">
-      <cart-widget></cart-widget>
-    </div>
-	</div>
-  <script src="lib/angular.js"></script>
-  <script src="lib/angular-ui-router.min.js"></script>
-  <script src="./app.module.js"></script>
-  <script src="./services/products.service.js"></script>
-  <script src="./services/productsDetails.service.js"></script>
-  <script src="./services/addtoCart.service.js"></script>
-  <script src="./components/header.component.js"></script>
-  <script src="./components/products.component.js"></script>
-  <script src="./components/cart.component.js"></script>
-  <script src="./components/productDetails.component.js"></script>
+  <body>
+    <root></root>
+
+    <script src="lib/angular.js"></script>
+    <script src="lib/angular-ui-router.min.js"></script>
+    <script src="./app.module.js"></script>
+    <script src="./services/products.service.js"></script>
+    <script src="./services/productsDetails.service.js"></script>
+    <script src="./services/addtoCart.service.js"></script>
+    <script src="./components/header.component.js"></script>
+    <script src="./components/products.component.js"></script>
+    <script src="./components/cart.component.js"></script>
+    <script src="./components/productDetails.component.js"></script>
   </body>
 </html>

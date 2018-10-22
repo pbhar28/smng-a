@@ -19,7 +19,7 @@ function stateProvider ($stateProvider, $urlRouterProvider) {
 			params: {
 				id: null
 			},
-			template: '<product-details ></product-details>'
+			template: '<product-details on-item-add="$ctrl.updateCartInfo(obj)"></product-details>'
 		})
 		.state('checkout',{
 			url:'/checkout',
@@ -31,7 +31,18 @@ function stateProvider ($stateProvider, $urlRouterProvider) {
 
 }
 
-angular.module('app').controller('appController', function () {
+angular.module('app').component('root', {
+	bindings: {
+	},
+	controller: [rootController],
+	templateUrl: '/views/root.html'
+})
+
+function rootController() {
 	var self = this;
 
-});
+	self.updateCartInfo = function(obj) {
+		self.cartInfo = obj;
+	}
+
+};

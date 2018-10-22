@@ -57,14 +57,14 @@
 	<div class="_2e0fx">
 		<div class="LrkrN">
 			<div class="_1g_1a _3iaj7">
-				<div class="_2Epw9 ">
+				<div class="_2Epw9 " ng-click="$ctrl.clearCart()">
 					<span class="_2JnGH icon-heartInverse">
 						<div class="TQcBQ icon-heart zSo2a" style="display: none;"></div>
 					</span>
-					<span class="_2FDKw">Favourite</span>
+					<span class="_2FDKw">Clear Cart</span>
 				</div>
-				<label>
-				<div class="_31C1x _2C8Ic _22URe">
+				<!-- <label></label> -->
+				<div class="_31C1x _2C8Ic _22URe" ng-click="$ctrl.viewCart()">
 					<span class="_17CQa">
 						<label class="b5XpK _2cl4v _1Q69C">
 						<input class="_1WnJw" type="checkbox" value="">
@@ -72,9 +72,8 @@
 						<svg width="16" class="_2m7ny" viewBox="0 0 24 24"><path d="M24,0 L24,24 L0,24 L0,0 L24,0 Z M9.5,18.25 L20.75,7.43269231 L19,5.75 L9.5,14.8846154 L5,10.5576923 L3.25,12.2403846 L9.5,18.25 Z"></path></svg>
 						</label>
 					</span>
-					<span class="_1KYwd">Veg Only</span>
+					<span class="_1KYwd">View Cart</span>
 				</div>
-				</label>
 				<div class="_3d2Yn "><span class="_2QyU3 icon-magnifier"></span><span class="_1JjHr"><input class="_5mXmk" type="text" placeholder="Search for dishes..." value=""></span><span class="_38kfh icon-close-thin"></span></div>
 			</div>
 		</div>
@@ -114,39 +113,38 @@
 <div class="_1J_la">
 	<div id="h-1950595611" class="_2dS-v" ng-repeat="item in $ctrl.data">
 		<h2 class="M_o7R _27PKo" data-id={{item.id}}>{{item.name}}</h2>
-		<div class="Yu6Bn">{{$ctrl.data.products.length}} items</div>
+		<div class="Yu6Bn">{{item.products.length}} items</div>
 		<div class="_1bGRc">
 			<div class="_2J3sY">
-				<div class="_2IEoD" style="height:auto; margin-bottom: 15px;" itemscope="" itemtype="http://schema.org/MenuItem" ng-repeat="product in item.products">
+				<div class="_2IEoD" style="height:auto; margin-bottom: 15px;" itemscope="" itemtype="http://schema.org/MenuItem" ng-repeat="product in item.products track by $index">
 					<div class="Qfuib">
 					<img class="_2tuBw _12_oN _3VTAJ m0mpx" height="160" width="244" alt="" src="{{product.imageSrc}}">
 					<span class="_3fVLa"></span>
-					<div class="_2FMT0 _1bfQ9" style="background-color: rgb(213, 61, 76); color: rgb(255, 255, 255);"><span class="_23BlT" style="border-color: rgb(176, 35, 49) rgb(176, 35, 49) transparent transparent;"></span>BESTSELLER<span class="rZ-gh" style="border-color: rgb(213, 61, 76) transparent;"></span></div>
 					</div>
 					<span class="icon-foodSymbol tKOaB _3h2yZ _3x58u"></span>
 					<div class="_2tcDp">
 						<div>
 							<div class="ft_i6">
 								<div class="_2SyqU" itemprop="name">{{product.name}}</div>
-								<span class="HwSGt"></span>	
+								<span class="HwSGt"></span>
 							</div>
 						</div>
-					</div>				
+					</div>
 					<div><!-- class="JWyJG" -->
 						<div class="_12lpv _3WiZC" style="margin-top: 7px;">
 						<span class="bQEAj">{{product.price}}</span>
-						&nbsp;|&nbsp;SP: 
-						<span class="bQEAj">{{product.sale_price}}</span></div>		
+						&nbsp;|&nbsp;SP:
+						<span class="bQEAj">{{product.sale_price}}</span></div>
 						<div class="_33Hf_ _3L1X9">
-							<div class="_1RPOp" data-id={{product.id}} ng-click="$ctrl.addItem(product.id)">ADD</div><!-- _36fT9 -->
-							<div class="_1ds9T _2WdfZ _4aKW6">+</div>
-							<div class="_29Y5Z _20vNm _4aKW6"></div>
-							<div class="_2zAXs _2quy- _4aKW6">0</div>
+							<div class="_1RPOp" id="btn-{{$index}}" data-pid={{product.id}} ng-click="$ctrl.addItem(product.id, item.id, $event)">ADD</div>
+							<!-- _36fT9 , '_4aKW6': $ctrl.itemAdded -->
+							<div class="_1ds9T _4aKW6 _icC3" ng-click="$ctrl.incItemCount(product.id, item.id, product.cartItemKey)">+</div><!-- _2WdfZ ng-class="{'_4aKW6': !$ctrl.addBtn_$index}" -->
+							<div class="_29Y5Z _4aKW6 _icC3" ng-click="$ctrl.decItemCount(product.id, item.id, product.cartItemKey, $event)"></div><!-- _20vNm -->
+							<div class="_2zAXs _4aKW6 _icC3">{{product.quantity}}</div><!-- _2quy- -->
 						</div>
-						
-					</div>	
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>	
-</div>		
+	</div>
+</div>
